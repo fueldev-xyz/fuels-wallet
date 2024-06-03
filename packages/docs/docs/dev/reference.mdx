@@ -1,77 +1,77 @@
 ---
-title: API Reference
+title: API 参考
 category: For Developers
 ---
 
-# API Reference
+# API 参考
 
-## Add ABI
+## 添加 ABI
 
 `addAbi(abiMap: AbiMap): Promise<boolean>`<br />
-Add the ABI to the user's wallet.
+将 ABI 添加到用户的钱包中。
 
-## Add Asset
+## 添加资产
 
 `addAsset(asset: Asset): Promise<boolean>`<br />
-Request the user to add metadata for an asset to the wallet.
+请求用户为资产添加元数据到钱包。
 
-## Add Assets
+## 添加资产
 
 `addAssets(asset: Asset[]): Promise<boolean>`<br />
-Request the user to add metadata for multiple assets to the wallet at once.
+一次请求用户为多个资产添加元数据到钱包。
 
-## Add Network
+## 添加网络
 
 `addNetwork(url: string): Promise<boolean>`<br />
-Request the user to add a new network. Return true if success or false it fails.
+请求用户添加一个新的网络。如果成功返回 true，否则返回 false。
 
-## Clean
+## 清理
 
 `clean(): void`<br />
-Clean the storage used by the Fuel SDK, which is utilized to keep track of the selected connector.
+清理 Fuel SDK 使用的存储空间，用于跟踪所选连接器。
 
-## Connect
+## 连接
 
 `connect(): Promise<boolean>`<br />
-Request permission to start a connection between the project and the wallet. Return the connection state.
+请求权限开始项目与钱包之间的连接。返回连接状态。
 
-## Current Account
+## 当前账户
 
 `currentAccount(): Promise<string | null>`<br />
-Return the current account being used in the wallet application.
-If the account selected is not authorized for the connection, returns null.
+返回钱包应用程序中正在使用的当前账户。
+如果所选账户未被授权连接，则返回 null。
 
-## Current Connector
+## 当前连接器
 
 `currentConnector(): FuelConnector`<br />
-Return the current selected connector.
+返回当前选择的连接器。
 
-## Current Network
+## 当前网络
 
 `currentNetwork(): Promise<Network>`<br />
-Return the current network being used in the wallet application.
+返回钱包应用程序中正在使用的当前网络。
 
-## Destroy
+## 销毁
 
 `destroy(): void`<br />
-Removes all listeners and cleans the storage.
+移除所有监听器并清理存储。
 
-## Disconnect
+## 断开连接
 
 `disconnect(): Promise<boolean>`<br />
-Disconnect your project from the wallet. Return the connection state.
+将项目与钱包断开连接。返回连接状态。
 
-## Events
+## 事件
 
-Fuel emits events when certain actions occur. These events can be listened to by using the `on` method.
+在发生某些操作时，Fuel 会触发事件。可以使用 `on` 方法监听这些事件。
 
-The events API follows the native Node.js `EventEmitter` enabling, `on`, `once`, and `off`.
-The events enum `FuelConnectorEventTypes` can be imported from the `@fuels` package.
+事件 API 遵循原生 Node.js 的 `EventEmitter`，支持 `on`、`once` 和 `off`。
+可以从 `@fuels` 包导入事件枚举 `FuelConnectorEventTypes`。
 
-### Usage
+### 使用方法
 
-The `fuel` object has an `events` property which is an enum of all the events that can be listened to. <br />
-The `on` method takes two arguments, the event name and a callback function. The callback function receives data associated with the event.
+`fuel` 对象有一个 `events` 属性，它是可以监听的所有事件的枚举。<br />
+`on` 方法接受两个参数，事件名称和回调函数。回调函数接收与事件相关的数据。
 
 ```ts
 fuel.on(fuel.events.connection, (connectionState) => {
@@ -79,94 +79,94 @@ fuel.on(fuel.events.connection, (connectionState) => {
 });
 ```
 
-### Event Types
+### 事件类型
 
-| Event              | Trigger                   | Params                 |
-| ------------------ | ------------------------- | ---------------------- |
-| `connectors`       | connectors change         | `Array<FuelConnector>` |
-| `currentConnector` | current connector change  | `FuelConnector`        |
-| `accounts`         | accounts available change | `Array<string>`        |
-| `currentAccount`   | current account change    | `string \| null`       |
-| `connection`       | connection state change   | `boolean`              |
-| `currentNetwork`   | current network change    | `Network`              |
-| `assets`           | assets metadata change    | `Array<Asset>`         |
+| 事件               | 触发                     | 参数                    |
+| ------------------ | ------------------------ | ----------------------- |
+| `connectors`       | 连接器变化               | `Array<FuelConnector>`  |
+| `currentConnector` | 当前连接器变化           | `FuelConnector`         |
+| `accounts`         | 可用账户变化             | `Array<string>`         |
+| `currentAccount`   | 当前账户变化             | `string \| null`        |
+| `connection`       | 连接状态变化             | `boolean`               |
+| `currentNetwork`   | 当前网络变化             | `Network`               |
+| `assets`           | 资产元数据变化           | `Array<Asset>`          |
 
-## Get ABI
+## 获取 ABI
 
 `getABI(contractId: string): Promise<JsonAbi>`<br />
-Return the ABI of the given contractId, or null if not found.
+返回给定 contractId 的 ABI，如果找不到则返回 null。
 
-## Get Connection Status
+## 获取连接状态
 
 `isConnected(): Promise<boolean>`<br />
-Return the state of the application connection.
+返回应用程序连接的状态。
 
-## Get Connector
+## 获取连接器
 
 `getConnector(connectorName: string): FuelConnector`<br />
-Return the connector with the given name.
+返回具有给定名称的连接器。
 
-## Get Wallet
+## 获取钱包
 
 `getWallet(address: string | AbstractAddress, provider?: Provider): Promise<Account>`<br />
-Return a `Account` instance, which can be used for contracts, transfers, and other interactions.
+返回一个 `Account` 实例，可用于合约、转账和其他交互。
 
-## Has ABI
+## 是否有 ABI
 
 `hasABI(contractId: string): Promise<boolean>`<br />
-Return a boolean indicating if the ABI for the given contractId is found.
+返回一个布尔值，指示给定 contractId 的 ABI 是否已找到。
 
-## Has Connector
+## 是否有连接器
 
 `hasConnector(connectorName?: string | FuelConnector): Promise<boolean>`<br />
-Check if any connector is present or, if a connector is provided, check whether it is available.
+检查是否存在任何连接器，如果提供了连接器，则检查其是否可用。
 
-## List Accounts
+## 列出账户
 
 `accounts(): Promise<Array<string>>`<br />
-Return the accounts authorized for the current connection.
+返回当前连接授权的账户列表。
 
-## List Assets
+## 列出资产
 
 `assets(): Promise<Array<Asset>>`<br />
-Return the list of assets in the current wallet.
+返回当前钱包中的资产列表。
 
-## List Connectors
+## 列出连接器
 
 `connectors(): Promise<Array<FuelConnector>>`<br />
-Return connectors with availability metadata.
+返回带有可用性元数据的连接器列表。
 
-## List Networks
+## 列出网络
 
 `networks(): Promise<Array<Network>>`<br />
-Return the list of networks in the current wallet.
+返回当前钱包中的网络列表。
 
-## Request Signature Message
+## 请求签名消息
 
 `async signMessage(address: string, message: string): Promise<string>`<br />
-Request a message signature for one specific account.
+请求特定账户签署消息。
 
-## Select Connector
+## 选择连接器
 
 `selectConnector(connectorName: string): Promise<boolean>` <br />
-This method will check if the desired connector is installed. If it is not detected in 1 second, the method throws an error.
+此方法将检查所需的连接器是否已安装。如果在 1 秒内未检测到，该方法将抛出错误。
 
-## Select Network
+## 选择网络
 
 `selectNetwork(url: string): Promise<boolean>`<br />
-Request the user to switch to a different network. Return true if success or false it fails.
+请求用户切换到另一个网络。如果成功返回 true，否则返回 false。
 
-## Send Transaction
+## 发送交易
 
 `async sendTransaction(address: string, transaction: TransactionRequestLike): Promise<string>`<br />
-Request a specific user account to send a transaction.
+请求特定用户账户发送交易。
 
-## Unsubscribe All
+## 取消订阅全部
 
 `unsubscribe(): void`<br />
-Remove all open listeners. This is useful when you want to dispose of the Fuel instance and avoid memory leaks.
+移除所有打开的监听器。当您想要处理 Fuel 实例并避免内存泄漏时，这很有用。
 
-## Version
+## 版本
 
 `version(): Promise<string>`<br />
-Return the current version of the Wallet and Network supported.
+返回钱包和网络支持的当前版本。

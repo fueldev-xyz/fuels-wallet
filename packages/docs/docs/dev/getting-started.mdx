@@ -1,29 +1,30 @@
 ---
-title: Getting Started
+title: 入门指南
 category: For Developers
 ---
 
-# Getting Started
+# 入门指南
 
-The Fuel Wallet SDK serves as a connection manager between your DApp and other wallets compatible with the Fuel Network. This package ensures that you can connect to the Fuel Wallet as well as any other wallet using a unified API.
+Fuel钱包SDK充当了您的DApp与兼容Fuel网络的其他钱包之间的连接管理器。此软件包确保您可以使用统一的API连接到Fuel钱包以及任何其他钱包。
 
-If you are using **React** jump to the [React section](./#using-react).
+如果您使用**React**，请跳转至[React部分](./#using-react)。
 
-## Installation
+## 安装
 
-To begin integrating the Fuel Wallet SDK into your DApp, you first need to install the packages `@fuels/connectors` and `fuels`.
+要开始将Fuel钱包SDK集成到您的DApp中，首先需要安装`@fuels/connectors`和`fuels`软件包。
 
 ```bash
 npm install fuels @fuels/connectors
 ```
 
-The installation also requires the `fuels` SDK, as it is used to communicate with the Fuel Network and provides a set of utilities required for interacting with contracts on the Fuel Network.
+安装还需要`fuels` SDK，因为它用于与Fuel网络通信，并提供一组必需的工具，用于与Fuel网络上的合约进行交互。
 
-## Example
+## 示例
 
-You can import `defaultConnectors` from `@fuels/connectors` to get a list of all the default connectors. Besides that, you can also create your own connectors or import them individually.
+您可以从`@fuels/connectors`中导入`defaultConnectors`以获取所有默认连接器的列表。此外，您还可以创建自己的连接器或单独导入它们。
 
-### Using default connectors
+### 使用默认连接器
+
 ```ts
 import { Fuel } from 'fuels';
 import { defaultConnectors } from '@fuels/connectors';
@@ -36,7 +37,8 @@ await fuel.selectConnector('Fuel Wallet');
 await fuel.connect();
 ```
 
-### Using a custom list
+### 使用自定义列表
+
 ```ts
 import { Fuel } from 'fuels';
 import { FuelWalletConnector } from '@fuels/connectors';
@@ -49,26 +51,26 @@ await fuel.selectConnector('Fuel Wallet');
 await fuel.connect();
 ```
 
-## Using React
+## 使用React
 
-We also provide a set of React hooks and a user interface (UI) for seamless interaction with connectors, eliminating the need for manual UI creation.
+我们还提供了一组React钩子和用户界面（UI），可与连接器无缝交互，无需手动创建UI。
 
-### Installation
+### 安装
 
 ```bash
 npm install fuels @fuels/connectors @fuels/react @tanstack/react-query
 ```
 
-- [fuels](https://github.com/FuelLabs/fuels-ts) is the SDK that provides a set of utilities for interacting with the Fuel Network.
-- [@fuels/connectors](https://github.com/FuelLabs/fuel-connectors) is the collection of connectors that allow you to connect to the Fuel Wallet.
-- [@fuels/react](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react) is a set of React hooks and a UI for seamless interaction with connectors.
-- [@tanstack/react-query](https://github.com/tanstack/query) is a library for managing and caching data in React applications.
+- [fuels](https://github.com/FuelLabs/fuels-ts)是提供与Fuel网络交互的一组实用工具的SDK。
+- [@fuels/connectors](https://github.com/FuelLabs/fuel-connectors)是允许您连接到Fuel钱包的连接器集合。
+- [@fuels/react](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react)是一组React钩子和用户界面（UI），可与连接器无缝交互。
+- [@tanstack/react-query](https://github.com/tanstack/query)是一种用于在React应用程序中管理和缓存数据的库。
 
-### Example
+### 示例
 
-#### Setup
+#### 设置
 
-Wrap your application with the providers `QueryClientProvider` and `FuelProvider`.
+将您的应用程序包装在提供者`QueryClientProvider`和`FuelProvider`中。
 
 ```tsx
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -89,17 +91,17 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 );
 ```
 
-Alternatively, you can pass `ui={false}` to the `FuelProvider` to disable the UI in order to implement your own UI.
+或者，您可以将`ui={false}`传递给`FuelProvider`，以禁用UI，以便实现自己的UI。
 
-#### Usage
+#### 使用
 
 ```ts
 import { useConnectUI } from '@fuels/react';
 const { connect, isConnecting } = useConnectUI();
 
 <button onClick={connect}>
-  {isConnecting ? 'Connecting...' : 'Connect'}
+  {isConnecting ? '连接中...' : '连接'}
 </button>
 ```
 
-Check our example application for a [quick start](https://github.com/FuelLabs/fuels-wallet/tree/master/examples/cra-dapp).
+查看我们的示例应用程序以获取[快速入门](https://github.com/FuelLabs/fuels-wallet/tree/master/examples/cra-dapp)。

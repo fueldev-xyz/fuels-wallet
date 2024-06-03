@@ -1,65 +1,77 @@
 ---
-title: Assets
+title: 资产
 category: For Developers
 ---
 
-# Assets
+# 资产
 
-## Transferring assets
+## 转移资产
 
-To transfer a specific amount to another address, use the `wallet.transfer()` method.
+要将特定数量的资产转移至另一个地址，使用 `wallet.transfer()` 方法。
 
+```tsx
 <CodeImport
   file="../../examples/assets/TransferAssets.tsx"
   commentBlock="transferAsset"
 />
 <Examples.TransferAssets />
+```
 
-## List Assets in the Wallet
+## 列出钱包中的资产
 
-You can list the assets added in the wallet by using the `assets()` method.
+您可以使用 `assets()` 方法列出钱包中添加的资产。
 
+```tsx
 <CodeImport file="../../examples/assets/ListAssets.tsx" commentBlock="assets" />
 <Examples.ListAssets />
+```
 
-## Adding custom Assets
+## 添加自定义资产
 
-To add custom assets, use the `useAssets()` method to add a single asset, or the `addAssets()` method to add multiple assets.
+要添加自定义资产，可以使用 `useAssets()` 方法添加单个资产，或使用 `addAssets()` 方法添加多个资产。
 
+```tsx
 <CodeImport
   file="../../examples/assets/AddAssets.tsx"
   commentBlock="addAssets"
 />
 <Examples.AddAssets />
+```
 
-## With React
+## 使用 React
 
-### Transferring assets
+### 转移资产
 
-To transfer an amount to other address, use the `wallet.transfer()` method and pass in the address you want to send to and the amount to send as well as the assetId.
+要将资产转移到其他地址，请使用 `wallet.transfer()` 方法，并传入要发送到的地址、要发送的金额以及资产ID。
 
+```tsx
 <CodeImport
   file="../../examples/assets/hooks/TransferAssetsHook.tsx"
   commentBlock="transferHook"
 />
 <Examples.TransferAssetsHook />
+```
 
-### List Assets
+### 列出资产
 
-You can keep track of the assets in the users wallet by using the hook `useAssets()`.
+您可以使用 `useAssets()` 钩子来跟踪用户钱包中的资产。
 
+```tsx
 <CodeImport
   file="../../examples/assets/hooks/ListAssetsHook.tsx"
   commentBlock="useAssets"
 />
 <Examples.ListAssetsHook />
+```
 
-### Add assets
+### 添加资产
 
-You can keep track of the assets in the users wallet by using the hook `useAddAssets()`.
+您可以使用 `useAddAssets()` 钩子来跟踪用户钱包中的资产。
 
+```tsx
 <CodeImport
   file="../../examples/assets/hooks/AddAssetsHook.tsx"
   commentBlock="addAssets"
 />
 <Examples.AddAssetsHook />
+```

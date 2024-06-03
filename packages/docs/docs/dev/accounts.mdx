@@ -1,70 +1,81 @@
 ---
-title: Accounts
+title: 账户
 category: For Developers
 ---
 
-# Accounts
+# 账户
 
-## List user accounts
+## 列出用户账户
 
-Once the connection is authorized, you can list all the user accounts using `accounts()`.
+一旦连接已经授权，您可以使用 `accounts()` 方法列出所有用户账户。
 
+```tsx
 <CodeImport
   file="../../examples/accounts/Accounts.tsx"
   commentBlock="accounts"
 />
+```
 
 <Examples.ListAccounts />
 
-### Watch Account Changes
+### 监听账户变化
 
-To watch account events, you can use the `accounts` event.
+要监听账户事件，可以使用 `accounts` 事件。
 
+```tsx
 <CodeImport
   file="../../examples/accounts/Accounts.tsx"
   commentBlock="watchAccounts"
 />
 <Examples.AccountsHook />
+```
 
-## Get Current Account
+## 获取当前账户
 
-You can also get the current account being used in the wallet using `currentAccount()`.
-If the return is `null` this means that the current account selected by the user is not connected.
+您还可以使用 `currentAccount()` 获取在钱包中使用的当前账户。
+如果返回值为 `null`，这意味着用户当前选择的账户未连接。
 
+```tsx
 <CodeImport
   file="../../examples/accounts/CurrentAccount.tsx"
   commentBlock="currentAccount"
 />
 
 <Examples.CurrentAccount />
+```
 
-### Watch Current Account Changes
+### 监听当前账户变化
 
-To monitor events related to the current account, utilize the `currentAccount` event. Receiving a `null` value from this event indicates that the user's currently selected account is not connected.
-If the event receive a `null` value this means that the current account selected by the user is not connected.
+要监视与当前账户相关的事件，请使用 `currentAccount` 事件。从此事件接收到 `null` 值表示用户当前选择的账户未连接。
 
+```tsx
 <CodeImport
   file="../../examples/accounts/CurrentAccount.tsx"
   commentBlock="watchCurrentAccount"
 />
 <Examples.CurrentAccountHook />
+```
 
-## With React
+## 使用 React
 
-You can keep track of the current account when using React using the `useAccount` hook as shown below:
+在使用 React 时，您可以使用以下 `useAccount` 钩子来跟踪当前账户：
 
-### All Connected Accounts
+### 所有已连接的账户
 
+```tsx
 <CodeImport
   file="../../examples/accounts/hooks/AccountsHook.tsx"
   commentBlock="useAccounts"
 />
 <Examples.AccountsHook />
+```
 
-### Current Account
+### 当前账户
 
+```tsx
 <CodeImport
   file="../../examples/accounts/hooks/CurrentAccountHook.tsx"
   commentBlock="useAccount"
 />
 <Examples.CurrentAccountHook />
+```

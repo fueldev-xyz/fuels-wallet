@@ -1,80 +1,80 @@
 ---
-title: Contributing Guide
+title: 贡献指南
 category: Contributing
 ---
 
-# Contributing Guide
+# 贡献指南
 
-Thanks for your interest in contributing to Fuel Wallet! This document outlines the process for installing dependencies and setting up Fuel Wallet for development, as well as some conventions to improve your contributions.
+感谢您对 Fuel Wallet 的贡献感兴趣！本文档概述了安装依赖项和设置 Fuel Wallet 进行开发的过程，以及一些改进贡献的约定。
 
-If you run into any difficulties getting started, you can always ask questions on our [Discord](https://discord.gg/xfpK4Pe).
+如果您在入门时遇到任何困难，随时可以在我们的[Discord](https://discord.gg/xfpK4Pe)上提问。
 
-## Finding Something to Work On
+## 寻找工作内容
 
-There are many ways in which you may contribute to the Fuel Wallet project, some of which involve coding knowledge and some which do not. A few examples include:
+您可以通过多种方式为 Fuel Wallet 项目做出贡献，其中一些涉及编码知识，另一些则不需要。以下是一些例子：
 
-- Reporting bugs
-- Adding new features or bug fixes for which there is already an open issue
-- Making feature requests
+- 报告错误
+- 为已有的开放问题添加新功能或错误修复
+- 提出功能请求
 
-Check out our [Help Wanted](https://github.com/FuelLabs/fuels-wallet/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) or [Good First Issues](https://github.com/FuelLabs/fuels-wallet/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) to find a suitable task.
+查看我们的[需要帮助](https://github.com/FuelLabs/fuels-wallet/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)或[初学者友好问题](https://github.com/FuelLabs/fuels-wallet/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)来找到合适的任务。
 
-If you are planning something big, for example, related to multiple components or changes current behaviors, make sure to [open an issue](https://github.com/FuelLabs/fuels-wallet/issues/new) to discuss with us before starting on the implementation.
+如果您计划做一些大的改动，例如涉及多个组件或更改当前行为，请确保在开始实施之前[打开一个问题](https://github.com/FuelLabs/fuels-wallet/issues/new)与我们讨论。
 
-## Contribution Flow
+## 贡献流程
 
-This is a rough outline of what a contributor's workflow looks like:
+以下是贡献者工作流程的大致概要：
 
-- Make sure what you want to contribute is already tracked as an issue.
-  - We may discuss the problem and solution in the issue.
-- Create a Git branch from where you want to base your work. This is usually master.
-- Write code, add test cases where applicable, and commit your work.
-- Run tests and make sure all tests pass.
-- Add a `changeset` to your PR.
-  - `pnpm changeset` - follow the prompt and add a description of your change at the end
-  - `pnpm changeset:empty` - if no packages are being bumped
-- If the PR contains any breaking changes, add the `breaking` label to your PR.
-- Push your changes to a branch in your fork of the repository and submit a pull request.
-  - Use one of the following tags in the title of your PR:
-    - `feat:` - A new feature
-    - `fix:` - A bug fix
-    - `docs:` - Documentation only changes
-    - `style:` - Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-    - `refactor:` - A code change that neither fixes a bug nor adds a feature
-    - `perf:` - A code change that improves performance
-    - `test:` - Adding missing tests or correcting existing tests
-    - `build:` - Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
-    - `ci:` - Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
-    - `chore:` - Other changes that don't modify `src` or test files
-    - `revert:` - Reverts a previous commit
-  - Make sure to mention the issue, which is created at step 1, in the commit message.
-- Your PR will be reviewed and some changes may be requested.
-  - Once you've made changes, your PR must be re-reviewed and approved.
-  - If the PR becomes out of date, you can use GitHub's 'update branch' button.
-  - If there are conflicts, you can merge and resolve them locally. Then push to your PR branch.
-    Any changes to the branch will require a re-review.
-- Our CI system (Github Actions) automatically tests all authorized pull requests.
-- Use Github to merge the PR once approved.
+- 确保您要贡献的内容已经作为问题被追踪。
+  - 我们可能会在问题中讨论问题和解决方案。
+- 从您要基于的分支创建一个 Git 分支。通常是 master 分支。
+- 编写代码，添加适用的测试用例，并提交您的工作。
+- 运行测试，确保所有测试通过。
+- 为您的 PR 添加一个 `changeset`。
+  - `pnpm changeset` - 按提示操作并在末尾添加更改描述
+  - `pnpm changeset:empty` - 如果没有包被提升
+- 如果 PR 包含任何重大更改，请在您的 PR 上添加 `breaking` 标签。
+- 将更改推送到您仓库中的一个分支，并提交一个拉取请求。
+  - 在您的 PR 标题中使用以下标签之一：
+    - `feat:` - 新功能
+    - `fix:` - 错误修复
+    - `docs:` - 仅文档更改
+    - `style:` - 不影响代码含义的更改（空格、格式、缺少的分号等）
+    - `refactor:` - 既不修复错误也不添加功能的代码更改
+    - `perf:` - 改善性能的代码更改
+    - `test:` - 添加缺失的测试或更正现有的测试
+    - `build:` - 影响构建系统或外部依赖的更改（例如 scopes: gulp, broccoli, npm）
+    - `ci:` - 更改 CI 配置文件和脚本（例如 scopes: Travis, Circle, BrowserStack, SauceLabs）
+    - `chore:` - 其他不修改 `src` 或测试文件的更改
+    - `revert:` - 撤销先前的提交
+  - 确保在提交消息中提到在第 1 步中创建的问题。
+- 您的 PR 将被审查，可能会请求一些更改。
+  - 一旦您进行了更改，您的 PR 必须重新审查并批准。
+  - 如果 PR 过期，您可以使用 GitHub 的“更新分支”按钮。
+  - 如果有冲突，您可以在本地合并并解决它们。然后推送到您的 PR 分支。
+    对分支的任何更改都需要重新审查。
+- 我们的 CI 系统（Github Actions）会自动测试所有授权的拉取请求。
+- 一旦获得批准，使用 GitHub 合并 PR。
 
-Thanks for your contributions!
+感谢您的贡献！
 
-### Linking Issues
+### 关联问题
 
-Pull requests should be linked to at least one issue in the same repo.
+拉取请求应至少与同一仓库中的一个问题关联。
 
-If the pull request resolves the relevant issues, and you want GitHub to close these issues automatically after it merged into the default branch, you can use the syntax (`KEYWORD #ISSUE-NUMBER`) like this:
+如果拉取请求解决了相关问题，并且您希望 GitHub 在合并到默认分支后自动关闭这些问题，可以使用以下语法（`关键字 #问题编号`）：
 
 ```md
 close #123
 ```
 
-If the pull request links an issue but does not close it, you can use the keyword `ref` like this:
+如果拉取请求关联一个问题但不关闭它，可以使用关键字 `ref`：
 
 ```md
 ref #456
 ```
 
-Multiple issues should use full syntax for each issue and separate by a comma, like:
+多个问题应该使用每个问题的完整语法并用逗号分隔，如：
 
 ```md
 close #123, ref #456

@@ -1,15 +1,15 @@
 ---
-title: Playwright Utils
+title: Playwright 工具包
 category: For Developers
 ---
 
-# Playwright Utils
+# Playwright 工具包
 
-The `@fuels/playwright-utils` package allows developers building frontend applications on fuel to test their application as it interacts with the fuel wallet. This package is compatible with the [playwright](https://playwright.dev/) test framework.
+`@fuels/playwright-utils` 包允许在 Fuel 上构建前端应用程序的开发人员测试其应用程序与 Fuel 钱包的交互。此包与 [playwright](https://playwright.dev/) 测试框架兼容。
 
-## Fixtures
+## 测试框架
 
-If you are not using any custom test fixtures in your playwright tests import the fixtures directly from this package, and pass in the path to the fuel extension. You can download the extension manually or use our `downloadFuel` function.
+如果您在 Playwright 测试中未使用任何自定义测试框架，请直接从此包中导入测试框架，并传入到 Fuel 扩展的路径。您可以手动下载扩展，也可以使用我们的 `downloadFuel` 函数。
 
 ```tsx
 // e2e.test.ts
@@ -21,11 +21,11 @@ const fuelPathToExtension = downloadFuel(FUEL_WALLET_VERSION');
 test.use({ pathToExtension: fuelPathToExtension });
 ```
 
-If you are using custom test fixtures in your playwright tests then setup the `context` and `extensionId` fixtures as shown in the [playwright docs](https://playwright.dev/docs/chrome-extensions#testing).
+如果您在 Playwright 测试中使用自定义测试框架，请按照 [playwright 文档](https://playwright.dev/docs/chrome-extensions#testing) 中显示的设置 `context` 和 `extensionId`。
 
 ## `FuelWalletTestHelper`
 
-The `FuelWalletTestHelper` is a class which allows you to interact with the fuel wallet extension.
+`FuelWalletTestHelper` 是一个类，允许您与 Fuel 钱包扩展交互。
 
 ### `walletSetup`
 
@@ -40,7 +40,7 @@ static async walletSetup(
 ): Promise<FuelWalletTestHelper>
 ```
 
-This function sets up your fuel wallet extension and returns an instance of `FuelWalletTestHelper`.
+此函数设置您的 Fuel 钱包扩展并返回一个 `FuelWalletTestHelper` 实例。
 
 ### `walletConnect`
 
@@ -51,7 +51,7 @@ async walletConnect(
 ): Promise<void>
 ```
 
-This function connects fuel wallet accounts to your web application through the connect popup window. It will throw an error if the connect popup window does not appear.
+此函数通过连接弹出窗口将 Fuel 钱包帐户连接到您的 Web 应用程序。如果连接弹出窗口未显示，则会引发错误。
 
 ### `walletApprove`
 
@@ -59,7 +59,7 @@ This function connects fuel wallet accounts to your web application through the 
 async walletApprove(): Promise<void>
 ```
 
-This function approves a transaction through the transaction popup window. It will throw an error if the transaction popup window does not appear.
+此函数通过交易弹出窗口批准交易。如果交易弹出窗口未显示，则会引发错误。
 
 ### `getWalletNotificationPage`
 
@@ -67,7 +67,7 @@ This function approves a transaction through the transaction popup window. It wi
 async getWalletPopupPage(): Promise<Page>
 ```
 
-This function returns the wallet popup page. It will throw an error is the popup does not exist.
+此函数返回钱包弹出窗口页面。如果弹出窗口不存在，则会引发错误。
 
 ### `addAssetThroughSettings`
 
@@ -81,7 +81,7 @@ async addAssetThroughSettings(
 ): Promise<void>
 ```
 
-This function adds an asset to the wallet through the settings.
+此函数通过设置向钱包添加资产。
 
 ### `addAssetFromHomeBalance`
 
@@ -95,7 +95,7 @@ async addAssetFromHomeBalance(
 ): Promise<void>
 ```
 
-This functions adds an asset to the wallet from the home page. It will throw an error if the wallet does not have any of the asset.
+此函数从主页向钱包添加资产。如果钱包没有任何资产，则会引发错误。
 
 ### `addAccount`
 
@@ -103,7 +103,7 @@ This functions adds an asset to the wallet from the home page. It will throw an 
 async addAccount(): Promise<void>
 ```
 
-This function adds an account to the wallet.
+此函数向钱包添加帐户。
 
 ### `switchAccount`
 
@@ -111,7 +111,7 @@ This function adds an account to the wallet.
 async switchAccount(accountName: string): Promise<void>
 ```
 
-This function switches to the account named `accountName`. It will throw an error if there are not accounts with `accountName`.
+此函数切换到名为 `accountName` 的帐户。如果没有名为 `accountName` 的帐户，则会引发错误。
 
 ### `addNetwork`
 
@@ -119,7 +119,7 @@ This function switches to the account named `accountName`. It will throw an erro
 async addNetwork(chainName: string, providerUrl: string): Promise<void>
 ```
 
-This function adds a network to the wallet. It will not add the network if a network already exists with the same name.
+此函数向钱包添加网络。如果已经存在同名的网络，则不会添加该网络。
 
 ### `switchNetwork`
 
@@ -127,8 +127,8 @@ This function adds a network to the wallet. It will not add the network if a net
 async switchNetwork(chainName: string): Promise<void>
 ```
 
-This function switches to the network named `chainName`. It will throw an error if there are no networks named `chainName`.
+此函数切换到名为 `chainName` 的网络。如果没有名为 `chainName` 的网络，则会引发错误。
 
-## Mocks
+## 模拟
 
-Mnemonic and password mock variables for the fuel wallet. These are the default mnemonic and password variables for the `walletSetup` function.
+Fuel 钱包的助记词和密码模拟变量。这些是 `walletSetup` 函数的默认助记词和密码变量。

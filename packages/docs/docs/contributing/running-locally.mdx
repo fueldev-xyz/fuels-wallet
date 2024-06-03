@@ -1,119 +1,119 @@
 ---
-title: Running locally
+title: 在本地运行
 category: Contributing
 ---
 
-# Running locally
+# 在本地运行
 
-This is a guide that will show you how you can run this project locally if you want to test or make contributions to our Fuel Wallet SDK.
+这是一个指南，将向您展示如何在本地运行此项目，以便测试或为我们的 Fuel Wallet SDK 做出贡献。
 
-## Running the project
+## 运行项目
 
-### Requirements
+### 要求
 
-This project includes frontend. To begin, install dependencies:
+此项目包括前端。开始之前，请安装依赖项：
 
-- [Node.js 18.14.1 or latest stable](https://nodejs.org/en/). We recommend using [nvm](https://github.com/nvm-sh/nvm) to install.
-- [pnpm v7.18.2 or latest stable](https://pnpm.io/installation/)
-- [Docker v0.8.2 or latest stable](https://docs.docker.com/get-docker/)
-- [Docker Compose v2.6.0 or latest stable](https://docs.docker.com/get-docker/)
+- [Node.js 18.14.1 或更高版本](https://nodejs.org/en/)。我们建议使用 [nvm](https://github.com/nvm-sh/nvm) 进行安装。
+- [pnpm v7.18.2 或更高版本](https://pnpm.io/installation/)
+- [Docker v0.8.2 或更高版本](https://docs.docker.com/get-docker/)
+- [Docker Compose v2.6.0 或更高版本](https://docs.docker.com/get-docker/)
 
-### Getting the Repository
+### 获取代码库
 
-1. Visit the [Fuel Wallet](https://github.com/FuelLabs/fuels-wallet) repo and fork the project.
-2. Then clone your forked copy to your local machine and get to work.
+1. 访问 [Fuel Wallet](https://github.com/FuelLabs/fuels-wallet) 仓库并 fork 项目。
+2. 然后将您 fork 的副本克隆到本地计算机并开始工作。
 
 ```sh
 git clone https://github.com/FuelLabs/fuels-wallet
 cd fuels-wallet
 ```
 
-### Install Dependencies
+### 安装依赖项
 
 ```sh
 pnpm install
 ```
 
-### Setup Environment Variables
+### 设置环境变量
 
 ```sh
 cp packages/app/.env.example packages/app/.env
 ```
 
-### Run Local Node
+### 运行本地节点
 
-In this step, we are going to;
+在此步骤中，我们将：
 
-- launch a local `fuel-core` node;
-- launch a local `faucet` API;
+- 启动本地 `fuel-core` 节点；
+- 启动本地 `faucet` API；
 
-Make sure you have docker installed and running, before running the command below
+在运行以下命令之前，请确保已安装并运行 Docker。
 
 ```sh
 pnpm node:up
 ```
 
-### Run Web App
+### 运行 Web 应用
 
-Start a local development frontend. After running the below command you can open [http://localhost:3000](http://localhost:3000) in your browser to view the frontend.
+启动本地开发前端。运行以下命令后，您可以在浏览器中打开 [http://localhost:3000](http://localhost:3000) 查看前端。
 
 ```sh
 pnpm dev
 ```
 
-## Project Overview
+## 项目概述
 
-This section has a brief description of each directory. More details can be found inside each package, by clicking on the links.
+此部分简要描述了每个目录。更多详细信息可以通过点击链接查看每个包中的内容。
 
-- [packages/app](@repository/packages/app/) Frontend Fuel Wallet application
-- [packages/config](@repository/packages/config/) Build configurations
+- [packages/app](@repository/packages/app/) 前端 Fuel Wallet 应用程序
+- [packages/config](@repository/packages/config/) 构建配置
 
-### Useful Scripts
+### 有用的脚本
 
-To make life easier we added as many useful scripts as possible to our [`package.json`](@repository/package.json). These are some of the most used during development:
+为了让生活更轻松，我们在 [`package.json`](@repository/package.json) 中添加了尽可能多的有用脚本。以下是开发过程中最常用的一些：
 
 ```sh
 pnpm <command name>
 ```
 
-| Script          | Description                                                                      |
-| --------------- | -------------------------------------------------------------------------------- |
-| `dev`           | Run development server for the web app [packages/app](@repository/packages/app/) |
-| `dev:storybook` | Run storybook, which is the place we use to develop our components.              |
-| `test`          | Run all units tests that are based on Jest.                                      |
-| `test:e2e`      | Run all E2E tests that are based on Cypress.                                     |
+| 脚本           | 描述                                                                         |
+| -------------- | ---------------------------------------------------------------------------- |
+| `dev`          | 运行用于 Web 应用程序的开发服务器 [packages/app](@repository/packages/app/)    |
+| `dev:storybook`| 运行 Storybook，这是我们用来开发组件的地方。                                  |
+| `test`         | 运行基于 Jest 的所有单元测试。                                                |
+| `test:e2e`     | 运行基于 Cypress 的所有端到端测试。                                           |
 
-> Other scripts can be found in [`package.json`](@repository/package.json).
+> 其他脚本可以在 [`package.json`](@repository/package.json) 中找到。
 
-### Running Tests
+### 运行测试
 
-Please make sure you have done these steps first:
+请确保首先完成以下步骤：
 
-- [Getting the Repository](#getting-the-repository)
-- [Install Dependencies](#install-dependencies)
-- [Run Local Node](#run-local-node)
+- [获取代码库](#获取代码库)
+- [安装依赖项](#安装依赖项)
+- [运行本地节点](#运行本地节点)
 
-### Run Tests in Development Mode
+### 在开发模式下运行测试
 
-All tests are run against the local node configured in the files `packages/app/.env` (or `packages/app/.env.example` if the file exists).
+所有测试都针对在文件 `packages/app/.env` 中配置的本地节点运行（如果存在文件 `packages/app/.env.example`）。
 
-Before running test, make sure a local test node is running:
+在运行测试之前，请确保本地测试节点正在运行：
 
 ```sh
 pnpm node:up
 ```
 
-Then, to run tests use:
+然后，运行以下命令来运行测试：
 
 ```sh
 pnpm test
 ```
 
-### Running E2E Tests
+### 运行端到端测试
 
-To run E2E tests, follow these steps:
+要运行端到端测试，请按照以下步骤操作：
 
-#### Run Tests E2E in Development Mode
+#### 在开发模式下运行端到端测试
 
 ```sh
 pnpm node:up
@@ -127,7 +127,7 @@ pnpm dev:crx
 pnpm test:e2e
 ```
 
-#### Run Tests E2E in CI/TEST env Mode
+#### 在 CI/TEST env 模式下运行端到端测试
 
 ```sh
 pnpm node:up

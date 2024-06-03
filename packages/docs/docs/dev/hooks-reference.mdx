@@ -1,13 +1,13 @@
 ---
-title: Hooks Reference
+title: 钩子参考
 category: For Developers
 ---
 
-# React Hooks Reference
+# React Hooks 参考
 
 ## `useAccount`
 
-Retrieves the current fuel account and returns the account address `<string | null>`.
+获取当前Fuel账户并返回账户地址 `<string | null>`。
 
 ```tsx
 const { account } = useAccount();
@@ -15,11 +15,11 @@ console.log(account);
 // fuel1r20zhd...
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useAccount.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useAccount.ts)
 
 ## `useAccounts`
 
-Retrieves the fuel accounts and returns the addresses of the accounts `<string[]>`
+获取Fuel账户并返回账户地址的数组 `<string[]>`。
 
 ```tsx
 const { accounts } = useAccounts();
@@ -27,11 +27,11 @@ console.log(accounts);
 // [fuel1r20zhd..., fuel1qqluc9..., ...]
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useAccounts.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useAccounts.ts)
 
 ## `useBalance`
 
-Fetches the balance `<BN | null>` of a specified address and asset ID. Additionally, it includes a listener that triggers a balance refresh when the window gains focus.
+获取指定地址和资产ID的余额 `<BN | null>`。此外，它还包括一个监听器，当窗口获得焦点时触发余额刷新。
 
 ```tsx
 const { balance } = useBalance({
@@ -40,25 +40,25 @@ const { balance } = useBalance({
 });
 
 console.log(balance);
-// 1000 (example balance)
+// 1000 (示例余额)
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useBalance.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useBalance.ts)
 
 ## `useChain`
 
-Fetches information about the current Fuel network `<ChainInfo | null>`.
+获取有关当前Fuel网络的信息 `<ChainInfo | null>`。
 
 ```tsx
 const { chain } = useChain();
 console.log(chain.name);
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useChain.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useChain.ts)
 
 ## `useConnect`
 
-Facilitates the connection to the Fuel wallet. Allows selecting a connector by name. It also provides a function `<UseMutateAsyncFunction<boolean | undefined>>` to initiate the connection and relevant mutation properties for managing the connection state.
+便于连接到Fuel钱包。允许按名称选择连接器。它还提供一个函数 `<UseMutateAsyncFunction<boolean | undefined>>` 来启动连接，并提供管理连接状态的相关变异属性。
 
 ```tsx
 const { connect, connectAsync } = useConnect();
@@ -66,18 +66,18 @@ const { connect, connectAsync } = useConnect();
 const handleConnect = async () => {
   connect('Fuel Wallet');
 
-  // Async way
+  // 异步方式
   await connectAsync('exampleConnectorName');
 };
 
 handleConnect();
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useConnect.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useConnect.ts)
 
 ## `useConnectors`
 
-Retrieves a list of available connectors `<Array<FuelConnector>>` for connecting to Fuel.
+检索可用连接器列表 `<Array<FuelConnector>>`，以便连接到Fuel。
 
 ```tsx
 const { connectors } = useConnectors();
@@ -85,11 +85,11 @@ const { connectors } = useConnectors();
 console.log(connectors);
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useConnectors.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useConnectors.ts)
 
 ## `useDisconnect`
 
-Facilitates disconnection from the Fuel Wallet. It provides a function `<UseMutateAsyncFunction<boolean | undefined>>` to initiate disconnection.
+便于从Fuel钱包断开连接。它提供一个函数 `<UseMutateAsyncFunction<boolean | undefined>>` 来启动断开连接。
 
 ```tsx
 const { disconnect } = useDisconnect();
@@ -97,18 +97,18 @@ const { disconnect } = useDisconnect();
 const handleDisconnect = async () => {
   disconnect();
 
-  // Async way
+  // 异步方式
   await disconnectAsync();  
 };
 
 handleDisconnect();
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useDisconnect.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useDisconnect.ts)
 
 ## `useIsConnected`
 
-Checks whether the user is connected to the Fuel protocol. It provides a `boolean` indicating the connection.
+检查用户是否连接到Fuel协议。它提供一个指示连接的 `boolean`。
 
 ```tsx
 const { isConnected } = useIsConnected();
@@ -116,56 +116,57 @@ console.log(isConnected);
 // true
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useIsConnected.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useIsConnected.ts)
 
 ## `useNodeInfo`
 
-Asynchronously retrieves information about the connected node, checks compatibility with a specified version. The function returns `isCompatible` (a `<boolean>`), and node information.
+异步获取与连接节点有关的信息，检查是否与指定版本兼容。该函数返回 `isCompatible`（一个 `<boolean>`）和节点信息。
 
 ```tsx
 const { isCompatible } = useNodeInfo();
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useNodeInfo.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useNodeInfo.ts)
 
 ## `useProvider`
 
-Returns the provider from the Fuel object instance.
+从Fuel对象实例返回提供程序。
 
 ```tsx
 const { provider } = useProvider();
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useProvider.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useProvider.ts)
 
-## `useTransaction`
 
-Retrieves transaction information associated with a specific transaction ID by using the `provider.getTransaction` method.
+## `````
+
+使用 `provider.getTransaction` 方法检索与特定交易ID相关联的交易信息。
 
 ```tsx
-const { transaction } = useTransaction({ txId: 'fuel1r20zhd...' });
+const { transaction } = ```({ txId: 'fuel1r20zhd...' });
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useTransaction.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/```.ts)
 
-## `useTransactionReceipts`
+## ````Receipts`
 
-Retrieves transaction receipts `<Array<TransactionResultReceipt>>` associated with a specific transaction ID using the `useFuel` hook.
+使用 `useFuel` 钩子检索与特定交易ID相关联的交易收据 `<Array<TransactionResultReceipt>>`。
 
 ```tsx
-const { transactionReceipts } = useTransactionReceipts({
+const { transactionReceipts } = ```Receipts({
   txId: 'fuel1r20zhd...',
 });
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useTransactionReceipts.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/```Receipts.ts)
 
 ## `useWallet`
 
-Retrieves wallet instance `<Account | null | undefined>` and ensures the presence of a valid address and fuel instance.
+检索钱包实例 `<Account | null | undefined>` 并确保存在有效的地址和Fuel实例。
 
 ```tsx
 const { wallet } = useWallet({ address: 'fuel1r20zhd...' });
 ```
 
-[See the source file](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useWallet.ts)
+[查看源文件](https://github.com/FuelLabs/fuels-npm-packs/tree/main/packages/react/src/hooks/useWallet.ts)

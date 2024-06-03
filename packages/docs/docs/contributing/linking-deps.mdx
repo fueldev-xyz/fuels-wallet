@@ -1,46 +1,45 @@
 ---
-title: Linking local dependencies
+title: 链接本地依赖
 category: Contributing
 ---
 
-# Supported dependencies
+# 支持的依赖项
 
-We support locally link with [`@fuel-ui`](https://github.com/FuelLabs/fuel-ui) and [@fuel-ts](https://github.com/FuelLabs/fuels-ts) repositories
+我们支持与 [`@fuel-ui`](https://github.com/FuelLabs/fuel-ui) 和 [@fuel-ts](https://github.com/FuelLabs/fuels-ts) 仓库进行本地链接。
 
-# Using local dependencies in wallet project
+# 在钱包项目中使用本地依赖项
 
-This will link dependencies within wallet monorepo to your global `pnpm` store, enabling you to use `@fuel-ui` and/or `@fuel-ts` packages via links in your local projects.
-This task may be tedious, but you can accomplish it by following these steps:
+这将把钱包 monorepo 中的依赖项链接到您的全局 `pnpm` 存储中，使您可以在本地项目中通过链接使用 `@fuel-ui` 和/或 `@fuel-ts` 包。这项任务可能比较繁琐，但您可以按照以下步骤完成：
 
-1. In the root directory of the repositories(`@fuel-ui` and/or `@fuel-ts`):
+1. 在仓库（`@fuel-ui` 和/或 `@fuel-ts`）的根目录中：
 
-- Link dependency to global pnpm store:
+- 将依赖项链接到全局 pnpm 存储：
 
 ```sh
 pnpm -r exec pnpm link --global --dir ./
 ```
 
-- Execute your build and make sure changes will reflect in wallet:
+- 执行构建并确保更改在钱包中反映：
 
 ```sh
 pnpm build:packages
 ```
 
-2. Inside `fuels-wallet` root directory, edit `scripts/deps.sh`.
+2. 在 `fuels-wallet` 根目录中，编辑 `scripts/deps.sh`。
 
-- If you're enabling link to `@fuel-ui`, enable this configuration:
+- 如果您启用了对 `@fuel-ui` 的链接，请启用此配置：
 
 ```sh
 LINK_FUEL_UI=true
 ```
 
-- If you're enabling link to `@fuel-ts`, enable this configuration:
+- 如果您启用了对 `@fuel-ts` 的链接，请启用此配置：
 
 ```sh
 LINK_FUEL_TS=true
 ```
 
-3. That's it. Now inside `fuels-wallet` root directory, run your dev command as you wish:
+3. 完成。现在在 `fuels-wallet` 根目录中，按照需要运行您的开发命令：
 
 ```sh
 pnpm dev
@@ -48,25 +47,25 @@ pnpm dev:deps
 pnpm dev:crx
 ```
 
-> **Note**
+> **注意**
 >
-> This command will:
+> 此命令将：
 >
-> - Link dependency repos across all wallet monorepo packages, including the root
-> - Run dev server with linked dependencies
+> - 跨所有钱包 monorepo 包链接依赖项仓库，包括根目录
+> - 使用链接的依赖项运行开发服务器
 
-Done! Now your changes in `@fuel-ui` and/or `@fuel-ts` will reflect in wallet project. Test with a simple `console.log` to make sure it worked.
+完成！现在您在 `@fuel-ui` 和/或 `@fuel-ts` 中的更改将反映在钱包项目中。使用简单的 `console.log` 进行测试以确保其正常工作。
 
-### Troubleshooting
+### 疑难解答
 
-If you're linking for the first time, you might need:
+如果您是第一次链接，可能需要：
 
 ```sh
-  pnpm setup
+pnpm setup
 ```
 
-If it still have problems, you might need to setup again (As `pnpm` releases new version, the global folder structure may change)
+如果仍然有问题，您可能需要重新设置（由于 `pnpm` 发布新版本，全局文件夹结构可能会改变）
 
 ```sh
-  pnpm setup
+pnpm setup
 ```

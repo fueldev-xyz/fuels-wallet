@@ -1,99 +1,117 @@
 ---
-title: Connecting
+title: 连接钱包
 category: For Developers
 ---
 
-# Connecting
+# 连接钱包
 
-## Checking if a Connector is available
+## 检查是否有可用的连接器
 
-Before performing other actions, the Application should check whether the user has a Wallet installed. While this is not required, it is good practice to ensure a better user experience.
+在执行其他操作之前，应用程序应检查用户是否已安装了钱包。虽然这不是必需的，但最好确保更好的用户体验。
 
+```tsx
 <CodeImport
   file="../../examples/connecting/CheckWallet.tsx"
   commentBlock="checkWallet"
 />
+```
 
-As a user installs a wallet, you can listen for changes on the status of the `currentConnector`.
+当用户安装钱包时，您可以监听 `currentConnector` 状态的变化。
 
+```tsx
 <CodeImport
   file="../../examples/connecting/CheckWallet.tsx"
   commentBlock="watchWallet"
 />
+```
 
 <Examples.CheckWallet />
 
-You can learn more about connectors and how they work to allow multiple wallet's [here](https://github.com/FuelLabs/fuels-wallet/wiki/Fuel-Wallet-Connectors)
+您可以在[此处](https://github.com/FuelLabs/fuels-wallet/wiki/Fuel-Wallet-Connectors)了解有关连接器及其工作原理的更多信息。
 
-## Requesting a Connection
+## 请求连接
 
-Before any user actions begin, the user must authorize the connection by calling the `connect()` method. This will initiate the connection flow in the user's Wallet, particularly if the user has more accounts than what is currently available to the connection.
+在开始任何用户操作之前，用户必须通过调用 `connect()` 方法来授权连接。这将在用户的钱包中启动连接流程，特别是如果用户拥有的帐户比当前连接可用的更多。
 
+```tsx
 <CodeImport
   file="../../examples/connecting/Connect.tsx"
   commentBlock="connect"
 />
+```
 
 <Examples.Connect />
 
-## Checking connection state
+## 检查连接状态
 
-To check if the user's wallet is already connected, you can use the `isConnected()` method.
+要检查用户的钱包是否已连接，可以使用 `isConnected()` 方法。
 
+```tsx
 <CodeImport
   file="../../examples/connecting/CheckConnection.tsx"
   commentBlock="checkConnection"
 />
+```
 
 <Examples.CheckConnection />
 
-## Watching connection state
+## 监听连接状态
 
-Since a user can add or remove a connection directly inside the wallet, we also recommend that your application listens for connection state changes using the event listener.
+由于用户可以直接在钱包中添加或删除连接，我们还建议您的应用程序使用事件监听器监听连接状态变化。
 
+```tsx
 <CodeImport
   file="../../examples/connecting/CheckConnection.tsx"
   commentBlock="watchConnection"
 />
+```
 
-## Removing connection
+## 移除连接
 
-In some cases, an application may want to provide an experience for the user to remove the connection. In these cases, you can use the `disconnect()` method.
+在某些情况下，应用程序可能希望为用户提供一种移除连接的体验。在这些情况下，您可以使用 `disconnect()` 方法。
 
+```tsx
 <CodeImport
   file="../../examples/connecting/Disconnect.tsx"
   commentBlock="disconnect"
 />
+```
 
 <Examples.Disconnect />
 
-## Using React Hooks
+## 使用 React Hooks
 
-### Requesting a Connection
+### 请求连接
 
-In React applications, you can leverage our ready to use hooks, which include event tracking.
+在 React 应用程序中，您可以利用我们提供的现成的 hooks，其中包括事件跟踪。
 
+```tsx
 <CodeImport
   file="../../examples/connecting/hooks/ConnectHook.tsx"
   commentBlock="connect"
 />
+```
 
 <Examples.ConnectHook />
 
-### Removing connection
+### 移除连接
 
+```tsx
 <CodeImport
   file="../../examples/connecting/hooks/DisconnectHook.tsx"
   commentBlock="disconnect"
 />
+```
 
 <Examples.DisconnectHook />
 
-### Checking connection state
+### 检查连接状态
 
-All hooks implement validations to ensure that the state is synchronized, using the methods and events available from the SDK.
+所有的 hooks 都实现了验证，以确保状态是同步的，使用了 SDK 提供的方法和事件。
 
+```tsx
 <CodeImport
   file="../../examples/connecting/hooks/ConnectHook.tsx"
   commentBlock="checkConnection"
 />
+```
